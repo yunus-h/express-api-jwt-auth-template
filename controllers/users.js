@@ -1,28 +1,35 @@
 const express = require('express');
 const router = express.Router();
+
 const User = require('../models/user');
+
 const verifyToken = require('../middleware/verify-token');
+
+router.get('/', verifyToken, async (req, res) => {
+  try {
+    const users = await User.find({}, "username");
+
+    res.json(users);
+  } catch (err) {
+    res.status(500).json({ err: err.message });
+  }
+});
 
 router.get('/:userId', verifyToken, async (req, res) => {
   try {
     if (req.user._id !== req.params.userId){
-      return res.status(401).json({ err: "Unauthorized"})
+      return res.status(403).json({ err: "Unauthorized"});
     }
 
-    const user = await User.findById(req.user._id);
+    const user = await User.findById(req.params.userId);
 
     if (!user) {
-      res.status(404)
-      throw new Error('Profile not found.');
+      return res.status(404).json({ err: 'User not found.'});
     }
-    
+
     res.json({ user });
   } catch (err) {
-    if (res.statusCode === 404) {
-      res.status(404).json({ err: err.message });
-    } else {
-      res.status(500).json({ err: err.message });
-    }
+    res.status(500).json({ err: err.message });
   }
 });
 

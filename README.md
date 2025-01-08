@@ -23,6 +23,4 @@ MONGODB_URI=mongodb+srv://<username>:<password>@sei-w0kys.azure.mongodb.net/myAp
 JWT_SECRET=supersecret
 ```
 
-
-
 Start the app with `nodemon`.
