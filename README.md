@@ -19,8 +19,12 @@ touch .env
 and add your MongoDB URI and a secret JWT string to it. Your MongoDB URI will look something like the first entry, but with your username and password:
 
 ```plaintext
-MONGODB_URI=mongodb+srv://<username>:<password>@sei-w0kys.azure.mongodb.net/myApp?retryWrites=true
+MONGODB_URI=mongodb+srv://<username>:<password>@sei.azure.mongodb.net/myApp?retryWrites=true
 JWT_SECRET=supersecret
 ```
 
-Start the app with `nodemon`.
+Start the app in your terminal with:
+
+``` sh
+npm run dev
+```
