@@ -2,7 +2,7 @@
 
 ## About
 
-This repo is a React JWT Auth template meant to be paired with a front-end app utilizing JWT tokens.
+This repo is an Express JWT Auth template meant to be paired with a front-end app utilizing JWT tokens.
 
 ## Getting started
 
